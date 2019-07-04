@@ -1,4 +1,5 @@
-# setting-webpack
+# vscode의 크롬 디버거를 사용
+-typescript,webpack,크롬디버거 연동
 
 # package-json
 ```
