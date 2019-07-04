@@ -1,6 +1,6 @@
 # setting-webpack
 
-#package-json
+# package-json
 ```
 {
   "name": "mytodolist",
@@ -28,5 +28,67 @@
   },
   "author": "",
   "license": "ISC"
+}
+```
+# tsconfig.json
+```
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es6",
+    "outDir": "dist",
+    "sourceMap": true
+  },
+  "include": ["src/**/*/"]
+}
+```
+# webpack.config.js
+```
+const path = require('path');
+
+module.exports = {
+  entry: './src/app.ts',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      }
+    ]
+  },
+  devtool: 'source-map',
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000
+  },
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ]
+  },
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+```
+
+# ./vscode/launch.json
+```
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Chrome against localhost, with sourcemaps",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:9000",
+            "sourceMaps": true,
+            "webRoot": "${workspaceRoot}",
+            "sourceMapPathOverrides": {
+                "webpack:///./*": "${webRoot}/*"
+            }
+        }
+    ]
 }
 ```
