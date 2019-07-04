@@ -1,7 +1,7 @@
 # setting-webpack
 
 #package-json
-{
+```{
   "name": "mytodolist",
   "version": "1.0.0",
   "description": "",
@@ -28,3 +28,4 @@
   "author": "",
   "license": "ISC"
 }
+```
